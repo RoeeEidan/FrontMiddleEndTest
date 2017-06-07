@@ -18,20 +18,38 @@ function attachJQuery() {
     })
 
 
+//<---- Quantity Input Listners Start ------->
+    
+    $('#quantityInput').focus((event) => { // sets some stuff if its the first time its focused
+        let wasInputed = JSON.parse(localStorage.getItem('wasInputed'));
+        console.log(wasInputed)
+        if (!wasInputed) {
+            localStorage.setItem('wasInputed', true);
+            document.getElementById('quantityInput').className = 'quantityInput';
+            $('#quantityInput').val('')
+        }
+    })
 
-    // event listner for the Quantity input
-    $('#quantityInput').on('change', (event) => {
+    $('#quantityInput').on('change input', (event) => { // makes sure that value is a positive Int and updates the dom
         let val = parseInt(event.target.value); // parses the value either to a Int or to NaN
-        if (val && (val > 0)) { // checks if the val is Int or NaN , and that its positive
+        if (val > 0) { 
             localStorage.setItem("quantity", val);
-            localStorage.setItem("currentIndex", 0 );
-            document.getElementById('quantityInput').className = 'quantityInput'
+            localStorage.setItem("currentIndex", 0);
             updateDom();
+            var strLength = $('#quantityInput').val().length * 2;
+            $('#quantityInput').focus(); // focuss the user back to the input after the dom update
+            $('#quantityInput')[0].setSelectionRange(strLength, strLength); // sets the user at the end of the string value
+
         } else {
             alert(`Please Type A Positive Intger`)
         }
     })
 
+    $('#quantityInput').blur(()=>{ // off focuss the user because the on change will focus the user back to the input
+        $('#quantityInput').focusout();
+    })
+    
+//<---- Quantity Input Listners End ------->
 
 
     // Even listner for the left arrow

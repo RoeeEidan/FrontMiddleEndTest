@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
     console.log("Get request is running.");
 })
-app.listen(PORT, () => {
+app.listen(8080, () => {
     console.log('Server Started on ' + PORT);
 
 });
