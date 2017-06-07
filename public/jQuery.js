@@ -22,7 +22,6 @@ function attachJQuery() {
 
     $('#quantityInput').focus((event) => { // sets some stuff if its the first time its focused
         let wasInputed = JSON.parse(localStorage.getItem('wasInputed'));
-        console.log(wasInputed)
         if (!wasInputed) {
             localStorage.setItem('wasInputed', true);
             document.getElementById('quantityInput').className = 'quantityInput';
@@ -39,17 +38,25 @@ function attachJQuery() {
             var strLength = $('#quantityInput').val().length * 2;
             $('#quantityInput').focus(); // focuss the user back to the input after the dom update
             $('#quantityInput')[0].setSelectionRange(strLength, strLength); // sets the user at the end of the string value
-
         } else {
             if ($('#quantityInput').val() !== '') {
                 $('#quantityInput').val('')
-                alert(`Please Type A Positive Intger`)
+                alert(`Please Type A Positive Intger`);
+                localStorage.setItem('byOnChange' , true );
             }
         }
     })
 
     $('#quantityInput').blur(() => { // off focuss the user because the on change will focus the user back to the input
         $('#quantityInput').focusout();
+        let byOnChange = JSON.parse( localStorage.getItem('byOnChange')); // checking if the listner was trigered because of the alert or the user
+        if (($('#quantityInput').val() === '') && !byOnChange) {
+            localStorage.setItem("quantity", 0);
+            localStorage.setItem("currentIndex", 0);
+            localStorage.setItem('wasInputed', false);
+            updateDom();
+        }
+        localStorage.setItem('byOnChange', false);
     })
 
     //<---- Quantity Input Listners End ------->
