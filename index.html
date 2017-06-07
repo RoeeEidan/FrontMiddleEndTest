@@ -1,0 +1,108 @@
+<html>
+
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="jQuery.js"></script>
+    <script type="text/javascript" src="ejs.min.js"></script>
+    <script type="text/javascript" src="functions.js"></script>
+    
+    <!--  Im saving my state in the local storage so this is where i set my defauls state  -->
+    <script type="text/javascript">
+        localStorage.setItem("quantity", 0);
+        localStorage.setItem("aOrB", 'A');
+        localStorage.setItem("isDisplayed", false);
+        localStorage.setItem("currentIndex", 0);
+        let state = getState();
+    </script>
+    
+    <!-- Tamplate Start  -->
+    
+    <script id="page" type="text/template">
+        <div class="container">
+            <!-- Left Box Start  -->
+            <div class="leftBox">
+                <div class="filler"></div>
+                <div class="optionsQuantity">
+                    <p class="options">
+                        Options
+                    </p>
+                </div>
+                <div class="filler"></div>
+                <div class="optionsQuantity">
+                    <p class="quantityText">
+                        Quantity
+                    </p>
+                    <input type="text" id='quantityInput' value=<%= (JSON.parse(state.quantity) || ("Type-Here") ); %> class=<%= (Number(state.quantity) ? 'quantityInput' : 'noQuantityInput'); %>>
+                </div>
+                <div class="OBJ1">OBJ1</div>
+            </div>
+            <!-- Left Box End  -->
+
+            <!-- Drop Box Start  -->
+            <div id ='dropDownID' class = <%= ( JSON.parse(state.isDisplayed) ? 'display' : 'displayNone'); %>>
+                <div class= 'dropDownWrraper ' >
+                    <div class="filler"></div>
+                    <div class='dropDown' >
+                        <select id='abSelect'>
+                            <option>Dropdown</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                        </select>
+                    </div>
+                    <div class="OBJ2">
+                        OBJ2
+                    </div>
+                </div>
+            </div>
+            <!-- Drop Box End  -->
+
+            <!-- Right Box Start  -->
+
+            <div class="rightBoxWrraper">
+                <div class="filler"></div>
+                    <% let currentIndex = Number(state.currentIndex) %>
+                    <% let quantity = ( Number(state.quantity) )%>
+                    <% for(let i = currentIndex;  i < quantity; i++ ){%>
+                    <% if((i - currentIndex) < 3 ){%>
+                    <% let y = ( Number(i) + 1 )%>
+                        <div class='singleItem'> 
+                            <div class="numberCircle">
+                                <div class="singleNumber">
+                                    <%= y %>
+                                </div>
+                            </div>
+                            Item
+                            <%= `${state.aOrB}` + `${y}` %>
+                        </div>
+                        <div class="filler"></div>
+                    <%}}%>
+                <div class="arrowWrraper">
+                    <strong class="singleArrow leftArrow"><</strong>
+                    <strong class="singleArrow rightArrow">></strong>
+                </div>
+                <div class="OBJ3">OBJ3</div>
+            </div>
+
+            <!-- Right Box End  -->
+        </div>
+    </script>
+
+    <!--  Tamplate End -->
+    <script>
+        onload = function () {
+            var page = document.getElementById('page').innerHTML;
+            var state = getState();
+            var html = ejs.render(page, { locals: state });
+            document.body.innerHTML = html;
+            attachJQuery();
+        }
+    </script>
+</head>
+
+<body id='body'>
+    Hello World
+</body>
+
+</html>

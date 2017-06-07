@@ -1,0 +1,208 @@
+*{
+    /*transition: all 0.15s ease-in-out;*/
+}
+
+
+p{
+    margin: 0;
+}
+
+
+/* <-- The big Container box -->*/
+.container{
+    width: 95%;
+    height: 95%;
+    margin: 2.5% auto;
+    background: #e7e6e6;
+    border: 2px solid #a3a2a2;
+    position: relative;
+}
+
+
+/* <----- Left Box Start ------->*/
+
+.leftBox{
+    height: 100%;
+    width: 25%;
+    float: left;
+    border-right: 2px solid #a3a2a2;
+    background-color: #bfbfbf;
+}
+
+.filler{
+    height: 7%;
+}
+
+.optionsQuantity{
+    height: 10.5%;
+    background-color: #afabab;
+    text-align: center;
+    border-top: 2px solid #a3a2a2;
+    border-bottom: 2px solid #a3a2a2;
+}
+
+.options{
+    padding: 8% 0;
+    font-size: 21px;
+}
+
+.quantityText{
+    font-size: 21px;
+    height: 40%;
+    padding-top: 4%;
+}
+
+.quantityInput{
+    background-color: #d9d9d9;
+    border: 2px solid #a3a2a2;
+    height: 35%;
+    width: 55%;
+    font-size: 14px;
+    text-align: center;
+}
+
+.noQuantityInput{
+    background-color: #aa4646;
+    color: #e7e6e6;
+    border: 2px solid #a3a2a2;
+    height: 35%;
+    width: 55%;
+    font-size: 14px;
+    text-align: center;
+}
+
+.OBJ1{
+    border-right: 2px solid #a3a2a2;
+    border-top: 2px solid #a3a2a2;
+    position: absolute;
+    bottom: 0px;
+    height: 17px;
+    width: 80px;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* <----- Left Box End ------->*/
+
+
+
+/* <----- Drop Down Box Start ------->*/ 
+
+.dropDownWrraper{
+    width: 12.5%;
+    background-color: black;
+    height: 100%;
+    border-right: 2px solid #a3a2a2;
+    background-color: #afabab;
+    position: absolute;z-index: 1;
+}
+
+.dropDown{
+    text-align: center;
+    padding: 19% 0;
+}
+
+select{
+    height: 29px;
+    width: 87%;
+    background-color: #d9d9d9;
+    font-size: 14px;
+}
+
+.OBJ2{
+    transition-timing-function: linear;
+    border-left: 2px solid #a3a2a2;
+    border-right: 2px solid #a3a2a2;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    height: 17px;
+    width: 80px;
+    text-align: center;
+    padding: 20px 0;
+    background-color: #bfbfbf;
+}
+
+/* Class that would be added to display or not OBJ2*/
+
+.displayNone{
+    visibility: hidden;
+    opacity: 0;
+    padding-left: 12.5%;
+    transition: all 0s;
+}
+
+.display{
+    transition: all 0.3s ease-in-out;
+    visibility: visible;
+    opacity: 1;
+    padding-left: 25%;
+    transition: visibility padding-left opacity ;
+}
+
+.displayNoneTransition{
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.3s ease-in-out ;
+}
+
+/* <----- Drop Down Box End ------->*/
+
+
+
+/* <----- Right Box Start ------->*/
+
+
+.rightBoxWrraper{
+    padding-left: 25%;
+    text-align: center;
+}
+
+.singleItem{
+    padding: 2.7% 0;
+    font-size: 21px;
+    background-color: #afabab;
+    width: 90%;
+    margin: auto;
+    border: 2px solid #a3a2a2;
+}
+
+.numberCircle{
+    float: left;
+    background-color: #d0cece;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    position: relative;
+    bottom: 15px;
+    left: 15px;
+}
+
+.singleNumber{
+    padding-top: 24%;
+}
+
+.singleArrow{
+    display: inline-block;
+    font-size: 21px;
+    padding: 0 3%;
+}
+
+.OBJ3{
+    border-left: 2px solid #a3a2a2;
+    border-top: 2px solid #a3a2a2;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    height: 17px;
+    width: 80px;
+    text-align: center;
+    padding: 20px 0;
+    background-color: #bfbfbf;
+}
+
+
+
+/* <----- Right Box End ------->*/
+
+
