@@ -18,8 +18,8 @@ function attachJQuery() {
     })
 
 
-//<---- Quantity Input Listners Start ------->
-    
+    //<---- Quantity Input Listners Start ------->
+
     $('#quantityInput').focus((event) => { // sets some stuff if its the first time its focused
         let wasInputed = JSON.parse(localStorage.getItem('wasInputed'));
         console.log(wasInputed)
@@ -32,7 +32,7 @@ function attachJQuery() {
 
     $('#quantityInput').on('change input', (event) => { // makes sure that value is a positive Int and updates the dom
         let val = parseInt(event.target.value); // parses the value either to a Int or to NaN
-        if (val > 0) { 
+        if (val > 0) {
             localStorage.setItem("quantity", val);
             localStorage.setItem("currentIndex", 0);
             updateDom();
@@ -41,15 +41,18 @@ function attachJQuery() {
             $('#quantityInput')[0].setSelectionRange(strLength, strLength); // sets the user at the end of the string value
 
         } else {
-            alert(`Please Type A Positive Intger`)
+            if ($('#quantityInput').val() !== '') {
+                $('#quantityInput').val('')
+                alert(`Please Type A Positive Intger`)
+            }
         }
     })
 
-    $('#quantityInput').blur(()=>{ // off focuss the user because the on change will focus the user back to the input
+    $('#quantityInput').blur(() => { // off focuss the user because the on change will focus the user back to the input
         $('#quantityInput').focusout();
     })
-    
-//<---- Quantity Input Listners End ------->
+
+    //<---- Quantity Input Listners End ------->
 
 
     // Even listner for the left arrow
