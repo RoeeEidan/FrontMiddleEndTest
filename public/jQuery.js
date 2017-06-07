@@ -25,7 +25,7 @@ function attachJQuery() {
         if (!wasInputed) {
             localStorage.setItem('wasInputed', true);
             document.getElementById('quantityInput').className = 'quantityInput';
-            $('#quantityInput').val('')
+            $('#quantityInput').val('');
         }
     })
 
